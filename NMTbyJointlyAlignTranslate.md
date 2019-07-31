@@ -9,9 +9,8 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 
 
-Outline
 
-
+## Outline
 
 
 1. [Motivation: A Fixed-length Vector is a Hurdle](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#1-motivation-a-fixed-length-vector-is-a-hurdle)
@@ -24,15 +23,15 @@ Outline
 
    2.1. [Model Architecture](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#21-model-architecture)
 
-   ​  2.1.1. [Encoder: Bidirectional RNN](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#211-encoder-bidirectional-rnn)
+   ​    2.1.1. [Encoder: Bidirectional RNN](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#211-encoder-bidirectional-rnn)
 
-   ​  2.1.2. [Decoder: Model Joint Learns How to Align and Translate](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#212-decoder-model-jointly-learns-how-to--align-and-translate)
+   ​    2.1.2. [Decoder: Model Joint Learns How to Align and Translate](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#212-decoder-model-jointly-learns-how-to--align-and-translate)
 
    2.2. [Training Procedure](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#22-training-procedure)
 
    2.3. [Result](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#23-result)
 
-   
+------   
 
 
 
