@@ -173,7 +173,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 - Training
 
   - optimizer: SGD
-  - Adapting the learning rate: [Adadelta](https://arxiv.org/pdf/1212.5701.pdf) (ε = 10−6 and ρ = 0.95)
+  - Adapting the learning rate: [Adadelta](https://arxiv.org/pdf/1212.5701.pdf) (ε = 10^(−6) and ρ = 0.95)
   - batch_size:  80 sentences
   - normalized the L2-norm of the gradient of the cost function each time to be at most a predefined threshold of 1, when the norm was larger than the threshold. [Pascanu *et al* (2013b)](http://proceedings.mlr.press/v28/pascanu13.pdf)
 
