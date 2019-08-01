@@ -165,7 +165,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 - Preprocessing
 
-  - usually toknenization(Moses)
+  - simple toknenization(Moses)
   - utilized 30,000 most frequently used words
 
 - Parameter Initialization
