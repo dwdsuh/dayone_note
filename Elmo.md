@@ -29,7 +29,7 @@
 
 #### 1. Bidirectional Language Models
 
-![biLM](/Users/kakao/kakao_project/paper_review/images/biLM.png)
+![biLM](./images/biLM.png)
 
 + ;  in the probability notation means "parameterized"
 
@@ -43,14 +43,14 @@
 
   
 
-  ![representation](/Users/kakao/kakao_project/paper_review/images/representation.png)
+  ![representation](./images/representation.png)
 
   
 
 + ELMo
   + Collapses all alyers in R into a single vector
 
-![elmo_formula](/Users/kakao/kakao_project/paper_review/images/ELMo_formula.png)
+![elmo_formula](./images/ELMo_formula.png)
 
 ​				s_task[j]: softmax-normalized weights 
 ​				gamma_task: scale the entire ELMo vector. --> importance in regards to the optimization process	
