@@ -48,6 +48,7 @@
   
 
 + ELMo
+  
   + Collapses all alyers in R into a single vector
 
 ![elmo_formula](./images/ELMo_formula.png)
@@ -74,12 +75,6 @@
   1. freeze the weights of the biLM 
   2. concatenate the ElMo vector ELMo_task[k] with x[k]
   3. pass the ELMo enhanced representation into the task RNN. 
-
-
-
-
-
-
 
 
 
