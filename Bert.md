@@ -1,3 +1,5 @@
+
+
 # BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 
 
@@ -86,7 +88,7 @@
 
 ### 3.2. Input/Output Representations
 
-+ In order to handle **miscellenous down-stream tasks**, both a single sentence and a pair of sentences(QA) should be clearly represented by our input representation
++ In order to handle **miscellaneous down-stream tasks**, both a single sentence and a pair of sentences(QA) should be clearly represented by our input representation
 
 + Definition of Sentence and Sequence in this paper
 
@@ -123,9 +125,9 @@
   + The final hidden vectors corresponding to the mask tokens are fed into an output softmax over the vocabulary. 
   + BERT mask 15% of all WordPiece tokens in each sequence at random. 
 
-  | Downside                                                     | Solution                                                     |
-  | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | Mismatch between pre-training and fine-tuning.<br />[Mask] does not appear in downstrean tasks | Not always mask tokens with [Mask]<br />- 80%: [Mask]<br />- 10%: random token<br />- 10%: unchanged |
+  | Downside                                                     | Solution                                                     | Effect                                                       |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | Mismatch between pre-training and fine-tuning.<br />[Mask] does not appear in downstrean tasks | Not always mask tokens with [Mask]<br />- 80%: [Mask]<br />- 10%: random token<br />- 10%: unchanged | - The Model is forced to keep <br />a distributional contextual representation of *every* input token since the model doesn't <br />which token will be asked to predict or <br />which is replace by a random word<br />- The small portion of  random replacement allows the model to keep its language understanding capability intact. |
 
 + **NSP**(Next Sentence Prediction)
 
@@ -217,7 +219,8 @@
 
   + P(Tok i == start) = softmax([dot(T[i],S) for i in range(M)])
   + P(Tok j == end) = softmax([dot(T[j], E) for j in range(M)])
-  + start/end span = argmax(dot(T[i], S) + dot(T[j], E)) s.t. j>=i
+  + start/end span = argmax(dot(T[i], S) + dot(T[j], E)) 
+                                   s.t. j>=i
 
 + Epoch: 3
 
@@ -228,4 +231,148 @@
   ![image](images/Bert_squad1_result.png)
 
   + Some models are fine-tuned on TriviaQA before fine-tuned on SQuAD
+
+
+
+### 5.3. SQuAD v2.0
+
++ Compared to v1.1, v2.0 made the problem more realistic
+
+  + no short answer exists in the provided paragraph
+
++ Applied more regulation when predicting the start and end tokens
+
+  + the score for no-answer span: 
+    s[null] = dot(S, C)+dot(E, C) , where C is the last representation of [CLS]
+  + start/end span = argmax(dot(T[i], S) + dot(T[j], E)) 
+                                    s.t. j>=i, **max(dot(T[i], S) + dot(T[j], E))> s[null] + τ **
+  + Epoch: 2
+  + Batch_Size: 48
+
++ result
+
+  ![image](images/Bert_squad2_result.png)
+
+### 5.4. SWAG
+
++ the Situation With Adversarial Generations
++ the dataset contrains 113K sentence-pair completion examples
++ this challenge evaluates grounded commonsense inference
++ Given a sentence. the task is to choose the most plausible continuation among four choices
+
+| Task                  | Input                                                        | output                                                       | metric |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
+| Binary Classification | the Concatenation of sentence A and sentence B<br />- sentence A: the given sentence<br />- sentence B: a possible continuation (one out of 4 options in the dataset) | the score that tells the possiblity that sentence B might come after sentence A | Acc    |
+
++ Parameters:
+
+  + a vector whose dot product with [CLS] yields the output
+  + Epoch: 3
+  + Batch_Size: 16
+
++ Result
+
+  ![image](images/Bert_swag_result.png)
+
+## 6. Ablation Studies
+
+> An **ablation study** typically refers to removing some “feature” of the model or algorithm and seeing how that affects performance.
+
+### 6.1. Effect of Pre-training Tasks
+
+![image](images/Bert_Ablation.png)
+
++ No NSP
+  - A bidirectional model trained using the MLM(Masked Language Model) but w/o the NSP(Next Sentence Prediction) task
++ LTR & No NSP (similar to GPT)
+  + A left-context-only model trained using a standard LRT(Left-to-Right) LM
+  + Trained w/o NSP task.
+
++  BERT_base vs. No NSP
+  + shows the importance of NSP tasks when pretraining
++ No NSP vs. LTR&No NSP
+  + shows the importance of bidirectional representation
++ +BiLSTM
+  + Adding BiLSTM layer to LTR&No NSP in order to make it perform better on SQuAD task
+  + While SQuAD score improved significantly, the overall GLUE score gets hurt
++ Concat LTR and RTL (similar to ELMo)
+  + twice as expensive as a single BERT
+  + non-intuitive for tasks like QA
+  + less powerful than a deep bidirectional model, since it can use both left and right context at every layer.
+
+
+
+### 6.2. Effect of Model Size
+
+![image](images/Bert_Ablation_model_size.png)
+
++ LM(ppl): Language Model Perplexity
++ Large Models are belived to perform better on large-scale tasks such as machine translation
++ Small tasks can take advantage of large models when the fine-tuning approach is adopted with moderate amount of additional parameters.
+
+
+
+### 6.3. Feature-based Approach with BERT
+
+
+
++ Advantages of Featrue-based Approach
+
+  + Some tasks require a task-specific model architecture. Transformer is not a ***panacea***
+  + Computaional benefits. No need to train the large model. 
+
++ Applying BERT to CoNLL-2003, NER(Named Entity Recognition) task
+
+  + CoNLL-2003 task
+
+    | Task | Input      | Output                                                       | Metric |
+    | ---- | ---------- | ------------------------------------------------------------ | ------ |
+    | NER  | A sentence | IOB tagging<br />[ORG]: organizations<br />[PER] : persons<br />[LOC]: locations<br />[MISC]: Miscellaneous | F1     |
+
+    
+
+    + Example
+
+    ![image](images/Bert_CoNLL.png)
+
+  + Result
+
+![images](images/Bert_Ablation_Feature_based.png)
+
+### 6.4. Effect of Number of Training Steps
+
+![image](images/Bert_TrainingStep.png)
+
++ The large amount of pretraining steps are justified
+
+
+
+
+
+
+
+### 6.5. Effect of Different Masking Procedures
+
+![image](images/Bert_Mask.png)
+
++ For the feature-based approach, the paper concatenate the last 4 layers of BERT as the features
++ Fine-tuning approach show the robustness over different strategies.
+
+
+
+## 7. Comparison of BERT, ELMo, GPT
+
+
+
+![image](images/Bert_Comparison.png)
+
+|                    | BERT                                                         | GPT                                        | ELMo          |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------ | ------------- |
+| Approach           | Fine-tuning                                                  | Fine-tuning                                | Feature-based |
+| Model Architecture | **bidirectional** Transformer<br />(Encoder)                 | Unidirectional Transformer<br />(Decoder)  | biLSTM        |
+| Training           | BooksCorpus(800M)<br />Wikipedia(2500M)                      | BooksCorpus(800M)                          |               |
+| Metatokens         | learns [SEP], [CLS], sentence A/B embedding during pre-training | introduces [SEP], [CLS] during fine-tuning |               |
+| Training_Step      | 1M steps                                                     | 1M steps                                   |               |
+| Batch_Size         | 12,800 words                                                 | 32,000 words                               |               |
+| Learning_Rate      | vary from task to task                                       | Identical for all fine-tuning experiment   |               |
 
