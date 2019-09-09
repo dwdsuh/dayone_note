@@ -374,5 +374,5 @@
 | Metatokens         | learns [SEP], [CLS], sentence A/B embedding during pre-training | introduces [SEP], [CLS] during fine-tuning |               |
 | Training_Step      | 1M steps                                                     | 1M steps                                   |               |
 | Batch_Size         | 12,800 words                                                 | 32,000 words                               |               |
-| Learning_Rate      | vary from task to task                                       | Identical for all fine-tuning experiment   |               |
+| Learning_Rate      | different from task to task                                  | Identical for all fine-tuning experiment   |               |
 
