@@ -126,7 +126,9 @@
 
   | Downside                                                     | Solution                                                     | Effect                                                       |
   | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | Mismatch between pre-training and fine-tuning.<br />[Mask] does not appear in downstrean tasks | Not always mask tokens with [Mask]<br />- 80%: [Mask]<br />- 10%: random token<br />- 10%: unchanged | - The Model is forced to keep <br />a distributional contextual representation of *every* input token since the model doesn't <br />which token will be asked to predict or <br />which is replace by a random word<br />- The small portion of  random replacement allows the model to keep its language understanding capability intact. |
+  | Mismatch between pre-training and fine-tuning.                                                                                                    <br />[Mask] does not appear in downstrean tasks | Not always mask tokens with [Mask]                                                                                             <br />- 80%: [Mask]<br />- 10%: random token<br />- 10%: unchanged | - The Model is forced to keep  a distributional contextual representation of *every* input token since the model doesn't know which token will be asked to predict or which is replace by a random word<br />- The small portion of  random replacement allows the model to keep its language understanding capability intact. |
+
+    
 
 + **NSP**(Next Sentence Prediction)
 
@@ -341,8 +343,11 @@
     
 
     + Example
+      ![image](images/Bert_CoNLL.png)
+    + Fine-tuning Procedure
+      ![image](images/Bert_CoNLL_fine_tuning.png)
 
-    ![image](images/Bert_CoNLL.png)
+    
 
   + Result
 
@@ -353,10 +358,6 @@
 ![image](images/Bert_TrainingStep.png)
 
 + The large amount of pretraining steps are justified
-
-
-
-
 
 
 
