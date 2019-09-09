@@ -12,8 +12,6 @@
 
 ## 1. Introduction
 
-
-
 ### 1.1 Two major strategies for applying pre-trained lanauge representation
 
 + #### Feature-Based Approach
@@ -103,7 +101,8 @@
   + \[CLS]: The first token of every sequece is always a special classification token.
     The final hidden state corresponding to this token is used as the aggregate sequence representation for classification tasks.  
   + \[SEP]: a special token that separate sentence pairs packed together into a single sequence
-  + Adding a learned embedding to every token indicating whether it belongs to sentence A or sentence B. 
+  + Segment Embedding: Adding a learned embedding to every token indicating whether it belongs to sentence A or sentence B. 
+    Add 0 if a token belongs to sentence A; Add 1 if a token belongs to sentence B
 
   > E: Input Embedding
   >
@@ -111,7 +110,7 @@
   >
   > T[i]: the final hidden vector for the i***th*** input token, the length of which equals H
 
-
+  + [Visualized Explanation of Embedding Layers](https://medium.com/@_init_/why-bert-has-3-embedding-layers-and-their-implementation-details-9c261108e28a)
 
 
 
@@ -143,7 +142,17 @@
   + English Wikipedia(2500M words) : only text passages
   + Billion Word Benchmark: document-level corpus
 
++ **Procedure**
 
+  + Traning Set: Sampled two spans of text from the corpus
+    + 50%: consecutive sentences
+    + 50%: random sentences
+  + Sequence Length: less than 512 tokens
+  + Batch Size: 256 sequences
+  + Traning steps: 1M steps
+  + Optimizer: Adam
+  + Dropout: 10% of all layers
+  + Activation: gelu activation
 
 ### 4.2 Fine-tuning
 
