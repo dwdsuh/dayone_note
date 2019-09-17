@@ -241,3 +241,24 @@
 + GUI
 + Shell
 
+
+
+## Logs
+
+the record of computer system
+
+
+
+## The Boot Process
+
+1. Computer is power on
+   + BIOS/UEFI: A low-level software that initializes our computer's hardware to make sure everything is good to go
+2. BIOS/UEFI runs POST(Power On Self Test)
+3. Boot device
+   + Boot loader
+   + OS
+   + Kernel
+
+
+
+![image](images/booting.png)
