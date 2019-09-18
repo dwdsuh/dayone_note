@@ -4,7 +4,7 @@
 
 
 
-![bert_image](images/Bert.jpg)
+![bert_image](../images/Bert.jpg)
 
 
 
@@ -72,7 +72,7 @@
 
 ### 3.1. Model Architecture
 
-![image](images/Bert_Arch.png)
+![image](../images/Bert_Arch.png)
 
 + BERT's model architecture is a multi-layer bidirectional Transformer encoder
 
@@ -95,7 +95,7 @@
 
 + Embedding 
 
-  ![embedding](images/Bert_Embedding.png)
+  ![embedding](../images/Bert_Embedding.png)
 
   + WordPiece embedding with a 30,000 token vocab.
   + \[CLS]: The first token of every sequece is always a special classification token.
@@ -192,7 +192,7 @@
 
 + **Fine-tuning**
 
-  ![image](images/Bert_fine_tuning_clf.png) 
+  ![image](../images/Bert_fine_tuning_clf.png) 
 
   + Final hidden verctor C, corresponding to [CLS] is used 
 
@@ -208,7 +208,7 @@
 
   + Score
 
-  ![image](images/Bert_Glue_score.png)
+  ![image](../images/Bert_Glue_score.png)
 
 
 
@@ -224,7 +224,7 @@
 
   
 
-![image](images/Bert_squad1.png)
+![image](../images/Bert_squad1.png)
 
 + New parameters: **S**(start vector), **E**(end vector), the size of which is (H,)
 
@@ -239,7 +239,7 @@
 
 + result
 
-  ![image](images/Bert_squad1_result.png)
+  ![image](../images/Bert_squad1_result.png)
 
   + Some models are fine-tuned on TriviaQA before fine-tuned on SQuAD
 
@@ -262,7 +262,7 @@
 
 + result
 
-  ![image](images/Bert_squad2_result.png)
+  ![image](../images/Bert_squad2_result.png)
 
 ### 5.4. SWAG
 
@@ -283,7 +283,7 @@
 
 + Result
 
-  ![image](images/Bert_swag_result.png)
+  ![image](../images/Bert_swag_result.png)
 
 ## 6. Ablation Studies
 
@@ -291,7 +291,7 @@
 
 ### 6.1. Effect of Pre-training Tasks
 
-![image](images/Bert_Ablation.png)
+![image](../images/Bert_Ablation.png)
 
 + No NSP
   - A bidirectional model trained using the MLM(Masked Language Model) but w/o the NSP(Next Sentence Prediction) task
@@ -315,7 +315,7 @@
 
 ### 6.2. Effect of Model Size
 
-![image](images/Bert_Ablation_model_size.png)
+![image](../images/Bert_Ablation_model_size.png)
 
 + LM(ppl): Language Model Perplexity
 + Large Models are belived to perform better on large-scale tasks such as machine translation
@@ -343,19 +343,19 @@
     
 
     + Example
-      ![image](images/Bert_CoNLL.png)
+      ![image](../images/Bert_CoNLL.png)
     + Fine-tuning Procedure
-      ![image](images/Bert_CoNLL_fine_tuning.png)
+      ![image](../images/Bert_CoNLL_fine_tuning.png)
 
     
 
   + Result
 
-![images](images/Bert_Ablation_Feature_based.png)
+![images](../images/Bert_Ablation_Feature_based.png)
 
 ### 6.4. Effect of Number of Training Steps
 
-![image](images/Bert_TrainingStep.png)
+![image](../images/Bert_TrainingStep.png)
 
 + The large amount of pretraining steps are justified
 
@@ -363,7 +363,7 @@
 
 ### 6.5. Effect of Different Masking Procedures
 
-![image](images/Bert_Mask.png)
+![image](../images/Bert_Mask.png)
 
 + For the feature-based approach, the paper concatenate the last 4 layers of BERT as the features
 + Fine-tuning approach show the robustness over different strategies.
@@ -374,7 +374,7 @@
 
 
 
-![image](images/Bert_Comparison.png)
+![image](../images/Bert_Comparison.png)
 
 |                    | BERT                                                         | GPT                                        | ELMo          |
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------ | ------------- |
