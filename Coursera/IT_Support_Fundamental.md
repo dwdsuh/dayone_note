@@ -206,7 +206,7 @@
 
 ## Process Management
 
-+ program: an application that we can rum like Chrome
++ program: an application that we can run like Chrome
 + CPU execute processes one by one through something known as a time slice. 
 + Kernel creates processes, efficiently schedules them, and manages how processes are terminated
 
@@ -262,3 +262,112 @@ the record of computer system
 
 
 ![image](images/booting.png)
+
+
+
+
+
+# Installing an OS
+
+1. Chrome OS
+   - operating system in Web Browser
+   - Process Management, Memory, I/O
+   - Chrome OS machines are interchangeable because most data is stored in the cloud
+   - User cannot change Config
+   - Safe
+2. Mac OS
+3. Ubuntu
+
+
+
+
+
+# Networking
+
+## Basics
+
++ the Internet: is the physical connection of computers and wires around the world
++ the web: the information on the Internet
+
++ Clients connect to a network run by an Internet service provider(ISP) like CenturyLink, Level 3, Comcast, Telefonica
++ IP address 
++ MAC address: address of device.
++ Packets. (data)
+
+
+
+## Networking Hardware
+
++ Ethernet cable
++ Wi-Fi
++ fiber optic cable(glass fiber)
++ Router : connects lots of different divices together and helps route network traffic
++ Switches, hubs
++ Network stack: a set of hardware or software that provides the infrastructure for a computer
+
+
+
+## Language of the Internet
+
++ Network protocol
++ TCP/IP
++ IP(Internet protocol) : delivers packets to right computers
++ TCP(Transmission Control Protocol): delivers information from one network to another
+
+## the Web
+
++ HTML(Hyper Text Markup Language)
++ URL: Uniform Resource Locator
++ ICANN: Internet Corporation for Assigned Names and Numbers
++ DNS: Domain Name System maps domain names to IP addresses
+
+
+
+# History of the Internet
+
++ TCP: Transmission Control Protocol
+
+# Limitaions of the Internet
+
++ IPv4 is an address that consists of 32 bits separated into four groups. 
++ IPv6 consists of 128 bits
++ NAT: Network Address Translation lets organization uses one public IP address and many private IP addresses within the network
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

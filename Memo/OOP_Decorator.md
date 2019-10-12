@@ -1,7 +1,5 @@
 # Decorators for Functions and Methods
 
-[source](such file or directory: '/tmp//data/private/translate/Wiki_DATA/kr/*.paragraph_info'
-evaluation completed)
 
 ## Abstract
 
