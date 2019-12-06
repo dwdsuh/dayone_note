@@ -42,9 +42,7 @@ for i in range(num_merges):
 
 
 
-
-
-##Subword Regularization: Improving NMT models with Multiple Subword Candidates 
+#Subword Regularization: Improving NMT models with Multiple Subword Candidates 
 
 [link](https://arxiv.org/pdf/1804.10959.pdf)
 
@@ -57,8 +55,6 @@ for i in range(num_merges):
    1. Fixing the set of vocab, optimize p(x) with the EM algorithm
    2. Compute the ***loss***[i] for each subword ***x***[i] where ***loss***[i] represents how likely the likelihood is reduced when the subword ***x***[i] is removed from the current vocabulary
    3. Sort the symbols by ***loss***[i] and keep top k% of subwords. Note that we always keep the subwords consisting of a single character to avoid oov. 
-
-
 
 + subword segmentation with the unigram LM can be seen as a probabilistic mixture of characters, subwords and word segmentations. 
 
@@ -101,3 +97,48 @@ for i in range(num_merges):
   2. Trains from raw sentences
   3. Whitespace is treated as a basic symbol
   4. Subword regularization
+
+
+
+
+
+
+
+# BPE-Dropout: Simple and Effective Subword Regularization
+
++ drawback of BPE
+  + deterministic nature
+    + it splits words into unique subword sequences, which means that for each word a model observes only one segmentation.
+    + a model is likely not to reach its full potential in exploiting morphology, learning the compositionality of words and being robust to segmentation errors
+    + subwords into which rare words are segmented end up poorly understood
+
++ our approach: produce multiple segmentations of the same word using BPE
+  + use vocab and merge table built by BPE
+  + at merge step, some merges are randomly dropped. 
+
+
+
+## Contribution
+
++ introduce BPE-dropout
++ BPE-dropout outperforms both BPE and previous subword regularization on a wide range of translation tasks
++ analyze how training with BPE-dropout affects a model and show that is leads to a better quality of learned token embeddings and to a model being more robust to noisy input. 
+
+
+
+## BPE-Dropout
+
++ innate ability of BPE to be stochastic
++ During segmentation, at each merge step some merges are randomly dropped with the probability p. 
+
+```python
+current_split = BpeSplit(input_string)
+merges = current_split.all_possible_merges_of_tokens()
+merges = merges.randomly_drop(probability = p)
+
+if merges != []:
+  current_split = current_split.apply_merge(merges)
+
+return current_split
+```
+

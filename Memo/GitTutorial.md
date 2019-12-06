@@ -308,6 +308,10 @@ stash: v. store (something) safely and secretly in a specified place.
   git commit -m "commit message"
   ```
 
+
+
+
+
 ### 4. git add
 
 ```bash
@@ -331,6 +335,147 @@ git add -A # add all changes in the entire tree no matter where you are currnetl
 git add * #not recommended. * is shell command. do not include hidden files. 
 ```
 
+
+
+
+
+### 5. Using branch
+
+#### 5.1. git branch
+
++ branches serve as an abstraction for the edit/stage/commit process. 
++ new commits are recored in the history for the current branch, which results in a fork in the history of the projects
++ you can create, list, rename, delete
++ you can't switch between branches or put a forked history back together again. 
+
+```bash
+# list all of the branches
+git branch --list
+git branch
+
+
+# create a new branch call <twig>
+git branch twig
+
+# delete
+git branch -d twig # not deleting branch if it has unmerged changes
+git branch -D twig # force delete the branch even if it has unmerged changes.
+
+# rename
+git branch -m twig # rename the current branch to twig
+
+# list all remote branches
+git branch -a
+```
+
++ creating branches
+  + branches are just pointers to commits. 
+  + when you create a branch, all Git needs to do is create a new pointer, it doesn't change the repository in any other way. 
+
+```bash
+git branch twig
+```
+
+
+
++ creating remote branches
+
+```bash
+git remote add new-remote-repo https://someurl
+git push new-remote-repo twig
+```
+
+this command will push a copy of the local branch crazy-experiment to the remote repo \<remote>
+
+
+
++ deleting remote branches
+
+```bash
+git push origin --delete twig
+# or
+git push origin :twig
+```
+
+this will push a delete signal to the remote origin repository that triggers a delete of the remote twig branch
+
+
+
+#### 5.2. git checkout
+
+git checkout command operates on files, commits, branches
+
++ checking out branches
+
+  + git clone vs. git checkout
+    + git clone: fetch code from a remote repository
+    + git checkout: switch between versions of code already on the local system
+
++ new branches
+
+  ```bash
+  # create and immediately switch to it
+  git checkout -b twig
+  
+  # create and immediately switch to it
+  git checkout -b <new-branch> <existing-branch>
+  ```
+
++ git chechout a remote branch
+
+  ```bash
+  # first fetch the contents of the branch
+  git fetch --all
+  
+  # checkout the remote branch like a local branch
+  git checkout <remotebranch>
+  ```
+
++ detached HEADs
+
+  + HEADS: git's way of referring to the current snapshot.
+  + git checkout  command simply updates the HEAD to point to either the specified branch or commit
+  + when checkout a commit, git switches into a detached HEAD state
+  + a detached HEAD state means there is no head tracking the change. you should not work in the detached HEAD state unless you doesn't want to keep the change in your work
+
+#### 5.3 git merge
+
++ all of the commands presented below merge into ***the current branch***
++ the current branch will be updated to reflect the merge, but the target branch will be updated to reflect the merge, but the target branch will be compltely unaffected. 
++ git merge will combine multiple suequences of commits into one unified history
++ merge scenario
+  + find a common base commit between two branches
+  + create a new "merge commit" that combines the changes of each queued merge commit sequence
++ the uniqueness of merge commits
+  + they have two parent commits. 
+  + if git encounters a piece of data that is changed in both histories it will be unable to automatically combine them. 
+  + Git will need user intervention to continue
++ Preparing to merge
+  + confirm the receiving branch
+  + fetch latest remote commits
+
+
+
+### 6. Git Workflow
+
+#### 6.1. Centralized Workflow
+
+```bash
+git push origin master  # git push <source> <branch-name>
+# if other members made some changes, this will return error message
+git pull --rebase origin master 
+# --rebase option tells Git to move all of Mary's commits to the tip of the master branch after synchronising it with the changes from the contral repo.
+# if some files conflict the terminal reads "Conflict: Merge conflict in <some-file>"
+git status # Unmerged paths: show the conflicting files
+git add <some-file> # stage
+git rebase --continues # commit and continue `git pull --rebase`
+
+git push origin master
+
+# when you are lost, use this command.
+git rebase --abort # you will go back to where you started
+
+```
 
 
 

@@ -1,4 +1,6 @@
-## Improving Language Understanding by Generative Pre-Training
+# Improving Language Understanding by Generative Pre-Training
+
+
 
 
 
@@ -38,3 +40,24 @@
 
 
 
+# Language Models are Unsupervised Multitask Learners
+
+- GPT2
+
+## Approach
+
+- Our speculation is that a language model with sufficient capacity will begin to learn to infer and perform the tasks demonstrated in natural language sequences in order to better predict them, regardless of the method of procurement. 
+- If a language model is able to do this it will be, in effect, performing unsupervised mulltitask learning.
+
+## Model
+
++ followed detail of GPT
++ Normalization
+  + layer normalization was moved to the input of each sub-block
+  + additional layer normalization was added after the final self-attention block
++ a modified initialization (which account for the accumulation on the residual path with model depth)
+  + the paper scale the weights of residual layers at initialization by a factor of 1/sqrt(N), where N is the number of residual layers. 
+
+residual connnection: the output of each sub-layer is LayerNorm(x+Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself.
+
+weather_en__informOzone

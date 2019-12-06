@@ -29,10 +29,6 @@
 
 ## Seq2Seq Model
 
-
-
-
-
 + Equation
 
 ![rnn equation](images/pointer_network_1.png)
@@ -46,8 +42,6 @@
 
 
 ## Pointer Network
-
-
 
 + Equation
 
