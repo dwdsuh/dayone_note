@@ -37,7 +37,3 @@
 ## Relative Positional Encoding
 
 원래 트랜스포머에서 사용한 positional encoding의 경우 세크먼트 간의 차이를 나타내지 못한다. 예를 들어 각 세그먼트의 첫번째 토큰은 같은 positional encoding과 더해진다. 
-
-
-
-+ by injecting 

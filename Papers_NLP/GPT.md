@@ -59,5 +59,3 @@
   + the paper scale the weights of residual layers at initialization by a factor of 1/sqrt(N), where N is the number of residual layers. 
 
 residual connnection: the output of each sub-layer is LayerNorm(x+Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself.
-
-weather_en__informOzone

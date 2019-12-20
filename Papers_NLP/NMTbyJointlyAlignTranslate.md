@@ -1,4 +1,4 @@
- 
+
 # Neural Machine Translation by Jointly Learning to Align and Translate
 
 ------
@@ -31,7 +31,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
    2.3. [Result](https://github.com/dwdsuh/Paper_Review/blob/master/NMTbyJointlyAlignTranslate.md#23-result)
 
-------   
+------
 
 
 
@@ -47,12 +47,12 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 
 
-![Figure 1](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/encoder_decoder-architecture.png)
+![Figure 1](./../images/encoder_decoder-architecture.png)
 
 - Encoder
 
-  ![Basic Encoder](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/basicEncoder_pic.png)
- 
+  ![Basic Encoder](./../images/basicEncoder_pic.png)
+
   
 
   - Input: a sequece of vectors: **x**=(x[1], x[1], x[3] . . . x[T])
@@ -61,13 +61,13 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 - Decoder
 
-  ![Basic Decoder](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/basicDecoder_pic.png)
+  ![Basic Decoder](./../images/basicDecoder_pic.png)
 
   - hidden state: s[t] = g(s[t-1], y[t-1], c)
 
   - output: **y** 
 
-    ![Conditional Probability](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/basicDecoder.png)
+    ![Conditional Probability](./../images/basicDecoder.png)
 
   
 
@@ -78,9 +78,9 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 - The basic architecture should compress all information in a input sentence into a fixed-length vector, regardless of the sentence length.
 - The inflexibility of a fixed-length vector has a harmful effect on the performance especially when the input sentence gets longer.
 
-![Figure2](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/longersentecesucks.png)
+![Figure2](./../images/longersentecesucks.png)
 
-​ \* if you are not familiar with the basic encoder-decoder architecture check out [Cho *et al* (2014a)](https://arxiv.org/pdf/1406.1078.pdf) and  [Cho *et al* (2014b)](https://www.aclweb.org/anthology/W14-4012)
+ \* if you are not familiar with the basic encoder-decoder architecture check out [Cho *et al* (2014a)](https://arxiv.org/pdf/1406.1078.pdf) and  [Cho *et al* (2014b)](https://www.aclweb.org/anthology/W14-4012)
 
 
 
@@ -105,7 +105,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 
 
-![jointlymodel](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/jointlymodel.png)
+![jointlymodel](./../images/jointlymodel.png)
 
 #### 2.1.1. Encoder: Bidirectional RNN
 
@@ -115,7 +115,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 - Hidden State **h**: Concatenating *forward hidden state* and *backward hidden state*
 
-  ![BiRNN hidden state](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/BiRNNhiddenstate.png)
+  ![BiRNN hidden state](./../images/BiRNNhiddenstate.png)
 
 
 
@@ -123,13 +123,13 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 - Overview
 
-![overview](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/jointlyoverview.png)
+![overview](./../images/jointlyoverview.png)
 
 - Model in detail: Activation functions
 
   1. **g** : deep output with a single maxout hidden layer
 
-     ![activationfunctionG](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/activationFunctionG.png)
+     ![activationfunctionG](./../images/activationFunctionG.png)
 
      
 
@@ -139,7 +139,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
      
 
-     ![activationfunctionG](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/activationfunctionF.png)
+     ![activationfunctionG](./../images/activationfunctionF.png)
 
      
 
@@ -152,7 +152,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
      
 
-     ![activationfunctionA](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/activationfunctionA.png)
+     ![activationfunctionA](./../images/activationfunctionA.png)
 
      
 
@@ -181,7 +181,7 @@ Paper URL: [Click Here](https://arxiv.org/pdf/1409.0473.pdf)
 
 ### 2.3. Result
 
-![result](https://github.com/dwdsuh/blog/blob/master/content/post/resources/_gen/images/jointlyresult.png)
+![result](./../images/jointlyresult.png)
 
 
 
